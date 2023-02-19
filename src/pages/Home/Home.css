@@ -1,0 +1,9 @@
+.Home {
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.Home img {
+  margin-bottom: 3rem;
+}
