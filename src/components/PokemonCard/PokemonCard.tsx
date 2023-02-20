@@ -11,12 +11,7 @@ export interface PokemonCardInterface {
 const PokemonCard: React.FC<PokemonCardInterface> = ({pokemon}) => {
   return (
     <Card
-      cover={
-        <img
-          alt="Ditto"
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"
-        />
-      }
+      cover={<img alt="Ditto" src={pokemon.image} />}
       extra={<StarOutlined />}
       title={pokemon.name}
     >

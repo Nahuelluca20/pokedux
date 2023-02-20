@@ -1,31 +1,14 @@
-import {useEffect} from "react";
-import {Col} from "antd";
-import {connect} from "react-redux";
-import {Dispatch} from "redux";
+import {Col, Spin} from "antd";
 
 import {Searcher, PokemonList} from "@/components";
 import logo from "@/statics/logo.svg";
-import {SetPokemonAction, setPokemons} from "@/actions";
 
 import "./Home.css";
-import {getPokemons} from "@/api";
-import {Pokemon, Pokemons} from "@/models";
+import {useFetchPokemons} from "@/hooks";
+export interface HomeInterface {}
 
-export interface HomeInterface {
-  pokemons: any;
-  setPokemons: any;
-}
-
-const Home: React.FC<HomeInterface> = ({pokemons, setPokemons}) => {
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      const pokemons = await getPokemons();
-
-      setPokemons(pokemons);
-    };
-
-    fetchPokemons();
-  }, []);
+const Home: React.FC<HomeInterface> = () => {
+  const state = useFetchPokemons();
 
   return (
     <div className="Home">
@@ -35,16 +18,15 @@ const Home: React.FC<HomeInterface> = ({pokemons, setPokemons}) => {
       <Col offset={8} span={8}>
         <Searcher />
       </Col>
-      <PokemonList pokemons={pokemons} />
+      {state.loading ? (
+        <Col className="spin-container" offset={12}>
+          <Spin size="large" spinning={true} />
+        </Col>
+      ) : (
+        <PokemonList pokemons={state.pokemons} />
+      )}
     </div>
   );
 };
-const mapStateToProps = (state: Pokemons) => ({
-  pokemons: state.pokemons,
-});
 
-const mapDispatchToProps = (dispatch: Dispatch<SetPokemonAction>) => ({
-  setPokemons: (value: Pokemon[]) => dispatch(setPokemons(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
