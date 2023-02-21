@@ -1,4 +1,4 @@
 export * from "./PokemonCard";
 export * from "./PokemonList";
 export * from "./Searcher";
-export * from "./index";
+export * from "./StartButton";

@@ -1,5 +1,3 @@
-import {error} from "console";
-
 import axios from "axios";
 
 import {Pokemon} from "@/models";
@@ -18,6 +16,11 @@ export const getPokemons = () => {
 export const getPokemonDetails = (pokemon: Pokemon) => {
   return axios
     .get(pokemon.url)
-    .then((res) => ({name: res.data.name, image: res.data.sprites.front_default}))
+    .then((res) => ({
+      id: res.data.id,
+      name: res.data.name,
+      image: res.data.sprites.front_default,
+      types: res.data.types,
+    }))
     .catch((error: Response) => console.error(error));
 };
