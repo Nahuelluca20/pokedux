@@ -7,6 +7,7 @@ import {Pokemon} from "@/models";
 
 const initialState = {
   pokemons: [],
+  pokemonsFiltered: [],
 };
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
@@ -32,6 +33,14 @@ export const dataSlice = createSlice({
   reducers: {
     setPokemons: (state, action) => {
       state.pokemons = action.payload;
+      state.pokemonsFiltered = action.payload;
+    },
+    setFilter: (state, action) => {
+      const pokemonsFiltered = state.pokemons.filter((pokemon: Pokemon) =>
+        pokemon.name.includes(action.payload.toLowerCase()),
+      );
+
+      state.pokemonsFiltered = pokemonsFiltered;
     },
     setFavorite: (state, action) => {
       const currentPokemonIndex = state.pokemons.findIndex((pokemon: any) => {
@@ -47,6 +56,6 @@ export const dataSlice = createSlice({
   },
 });
 
-export const {setPokemons, setFavorite} = dataSlice.actions;
+export const {setPokemons, setFavorite, setFilter} = dataSlice.actions;
 // console.log(dataSlice);
 export default dataSlice.reducer;
