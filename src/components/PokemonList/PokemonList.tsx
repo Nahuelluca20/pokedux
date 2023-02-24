@@ -18,24 +18,3 @@ const PokemonList: React.FC<PokemonListInterface> = ({pokemons}) => {
 };
 
 export default PokemonList;
-
-PokemonList.defaultProps = {
-  pokemons: [
-    {
-      name: "1",
-      url: "holauqehace",
-    },
-    {
-      name: "2",
-      url: "holauqehace",
-    },
-    {
-      name: "3",
-      url: "holauqehace",
-    },
-    {
-      name: "4",
-      url: "holauqehace",
-    },
-  ],
-};

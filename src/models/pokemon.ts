@@ -10,5 +10,5 @@ export interface Pokemon {
       };
     },
   ];
-  favorite: boolean | false;
+  favorite: boolean;
 }

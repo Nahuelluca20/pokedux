@@ -6,8 +6,8 @@ import {getPokemonDetails, getPokemons} from "@/api";
 import {Pokemon} from "@/models";
 
 const initialState = {
-  pokemons: [],
-  pokemonsFiltered: [],
+  pokemons: <Pokemon[]>[],
+  pokemonsFiltered: <Pokemon[]>[],
 };
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
@@ -43,14 +43,14 @@ export const dataSlice = createSlice({
       state.pokemonsFiltered = pokemonsFiltered;
     },
     setFavorite: (state, action) => {
-      const currentPokemonIndex = state.pokemons.findIndex((pokemon: any) => {
+      const currentPokemonIndex = state.pokemonsFiltered.findIndex((pokemon) => {
         return pokemon.id === action.payload;
       });
 
       if (currentPokemonIndex >= 0) {
-        const isFavorite = state.pokemons[currentPokemonIndex].favorite;
+        const isFavorite = state.pokemonsFiltered[currentPokemonIndex].favorite;
 
-        state.pokemons[currentPokemonIndex].favorite = !isFavorite;
+        state.pokemonsFiltered[currentPokemonIndex].favorite = !isFavorite;
       }
     },
   },

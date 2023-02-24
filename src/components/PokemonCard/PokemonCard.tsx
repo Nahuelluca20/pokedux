@@ -11,6 +11,7 @@ export interface PokemonCardInterface {
 }
 
 const PokemonCard: React.FC<PokemonCardInterface> = ({pokemon}) => {
+  console.log(pokemon);
   const dispatch = useDispatch();
   const typesString = pokemon.types?.map((elem) => elem.type?.name).join(", ");
 
