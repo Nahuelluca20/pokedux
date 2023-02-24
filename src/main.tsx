@@ -10,9 +10,9 @@ import {rootReducer} from "@/reducers";
 import "./index.css";
 import {Logger} from "@/middlewares/index";
 
-const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// const composeAlt = compose;
+const composeAlt = compose;
 
 const composeEnhancers = composeAlt(applyMiddleware(thunk, Logger));
 
