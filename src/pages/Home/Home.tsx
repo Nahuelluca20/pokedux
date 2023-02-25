@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Col, Spin} from "antd";
 
 import {Searcher, PokemonList} from "@/components";
@@ -15,10 +15,18 @@ export interface HomeInterface {}
 
 const Home: React.FC<HomeInterface> = () => {
   const state = useFetchPokemons();
-  const [pokemonSearched, setPokemonSearched] = useState<Pokemon[]>(state.pokemons);
+  const [pokemonSearched, setPokemonSearched] = useState<Pokemon[]>([]);
   const handleChange = (e: string) => {
     setPokemonSearched(state.pokemons.filter((p: Pokemon) => p.name.includes(e)));
   };
+
+  const loadPokemons = async () => {
+    await setPokemonSearched(state.pokemons);
+  };
+
+  useEffect(() => {
+    loadPokemons();
+  }, []);
 
   return (
     <div className="Home">
