@@ -5,6 +5,9 @@ import logo from "@/statics/logo.svg";
 
 import "./Home.css";
 import {useFetchPokemons} from "@/hooks";
+
+import {Link} from "react-router-dom";
+
 export interface HomeInterface {}
 
 const Home: React.FC<HomeInterface> = () => {
@@ -12,6 +15,7 @@ const Home: React.FC<HomeInterface> = () => {
 
   return (
     <div className="Home">
+      <Link to={`/favorites`}>Favorites</Link>
       <Col offset={10} span={4}>
         <img alt="Pokedux" src={logo} />
       </Col>
