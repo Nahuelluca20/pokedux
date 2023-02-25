@@ -6,9 +6,6 @@ import logo from "@/statics/logo.svg";
 
 import "./Home.css";
 import {useFetchPokemons} from "@/hooks";
-
-import {Link} from "react-router-dom";
-
 import {Pokemon} from "@/models";
 
 export interface HomeInterface {}
@@ -20,13 +17,13 @@ const Home: React.FC<HomeInterface> = () => {
     setPokemonSearched(state.pokemons.filter((p: Pokemon) => p.name.includes(e)));
   };
 
-  const loadPokemons = async () => {
-    await setPokemonSearched(state.pokemons);
+  const verificatePokemons = () => {
+    if (JSON.stringify(pokemonSearched) === JSON.stringify([])) {
+      return true;
+    } else {
+      return false;
+    }
   };
-
-  useEffect(() => {
-    loadPokemons();
-  }, []);
 
   return (
     <div className="Home">
@@ -43,7 +40,7 @@ const Home: React.FC<HomeInterface> = () => {
           <Spin size="large" spinning={true} />
         </Col>
       ) : (
-        <PokemonList pokemons={pokemonSearched} />
+        <PokemonList pokemons={verificatePokemons() ? state.pokemons : pokemonSearched} />
       )}
     </div>
   );

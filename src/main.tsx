@@ -1,9 +1,9 @@
-import React, {Children} from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import {Provider} from "react-redux";
 import {applyMiddleware, compose, legacy_createStore as createStore} from "redux";
 import thunk from "redux-thunk";
-import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./index.css";
 
 import {Favorites, Home} from "@/pages";
