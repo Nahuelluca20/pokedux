@@ -4,10 +4,33 @@
   margin-top: 3rem;
 }
 
+.logo-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.search-container div {
+  width: 300px;
+}
+
 .Home img {
   margin-bottom: 3rem;
+  width: 200px;
 }
 
 .spin-container {
   margin-top: 3rem;
+}
+
+@media screen and (min-width: 800px) {
+  .search-container div {
+    width: 500px;
+  }
 }

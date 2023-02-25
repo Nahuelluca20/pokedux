@@ -3,3 +3,9 @@
   margin: 0 auto;
   margin-top: 3rem;
 }
+
+.title-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

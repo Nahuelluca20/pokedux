@@ -1,0 +1,11 @@
+.Navbar {
+  background-color: #934ACC;
+  padding: 20px;
+}
+
+.links {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  font-weight: bold;
+}

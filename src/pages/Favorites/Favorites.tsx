@@ -8,11 +8,11 @@ export interface FavoritesInterface {}
 const Favorites: React.FC<FavoritesInterface> = () => {
   const favoritePokemon = useSelector((state: any) => state.favorites);
 
-  console.log(favoritePokemon);
-
   return (
     <div className="Favorites">
-      <h1>Estos son los favoritos:</h1>
+      <div className="title-container">
+        <h1>Favorites Pokemons:</h1>
+      </div>
       <PokemonList pokemons={favoritePokemon} />
     </div>
   );
